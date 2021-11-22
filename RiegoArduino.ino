@@ -2,6 +2,7 @@
 /*
  * CODIGO RIEGO 
  * @AUTOR DANIEL VALENCIA, SEBASTIAN MENDEZ
+ * @VERSION 1.0
  */
 
 #include <LiquidCrystal.h>
