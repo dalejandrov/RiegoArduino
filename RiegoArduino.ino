@@ -173,13 +173,13 @@ void dht22()
 //Riego
 void riego()
 {
-  int sensorVal = analogRead(A0);  //puerto que lee el sensor al entrar en tierra     
-       int porcentajeHumedad = map(sensorVal, wet, dry, 100, 0);
+        int sensorVal = analogRead(A0);  //puerto que lee el sensor al entrar en tierra     
+        int porcentajeHumedad = map(sensorVal, wet, dry, 100, 0);
 
         lcd.clear();
         lcd.setCursor(0,0);
         lcd.print(" HUMEDAD SUELO ");
-        lcd.setCursor(0,1);
+        lcd.setCursor(8,1);
         lcd.print(porcentajeHumedad);
         lcd.println("%");
         delay(5000);
@@ -188,18 +188,20 @@ void riego()
         {
           lcd.clear();
           lcd.setCursor(0,0);
-          lcd.print("SECO INICIANDO");
+          lcd.print("SECO! INICIANDO");
           digitalWrite(13, LOW); //porcentaje bajo, señal alta para encender el relé
-          delay(10000);
+          delay(5000);
         }else if (porcentajeHumedad > 50) // maximo nivel de humedad
         {   
           lcd.clear();
           lcd.setCursor(0,0);
-          lcd.print("MOJADO, APAGANDO");
+          lcd.print("MOJADO! APAGANDO");
           digitalWrite(13, HIGH); //porcentaje alto, señal baja se apaga el relé
           delay(5000);
         }
-      
+
+         delay(1000);
+          
        /* if(porcentajeHumedad >= 100)
         {
           lcd.clear();
