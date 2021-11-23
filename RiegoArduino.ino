@@ -190,7 +190,7 @@ void riego()
           lcd.setCursor(0,0);
           lcd.print("SECO INICIANDO");
           digitalWrite(13, LOW); //porcentaje bajo, señal alta para encender el relé
-          delay(5000);
+          delay(10000);
         }else if (porcentajeHumedad > 50) // maximo nivel de humedad
         {   
           lcd.clear();
@@ -200,7 +200,7 @@ void riego()
           delay(5000);
         }
       
-        if(porcentajeHumedad >= 100)
+       /* if(porcentajeHumedad >= 100)
         {
           lcd.clear();
           lcd.setCursor(0,0);
@@ -225,13 +225,15 @@ void riego()
           lcd.print(porcentajeHumedad);
           lcd.println("%");
           delay(5000);
-        }
+        }*/
 }
 
 void loop() 
 {
+  digitalWrite(13, HIGH);
+  delay(5);
 menu: 
-      digitalWrite(pinBuzzer, HIGH);
+    //  digitalWrite(pinBuzzer, HIGH);
       delay(1000);
       digitalWrite(pinBuzzer, LOW);
       
@@ -286,8 +288,10 @@ menu:
       
       if(datom == 0x01)
       {
+rtmn:
         riego();
         delay(250);
+        goto rtmn;
       }  
 
       if(datom == 0x02)
